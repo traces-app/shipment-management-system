@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getShipments, updateShipment } from "@/utils/localStorage";
+import { getShipments } from "@/utils/localStorage";
 import {
   Table,
   TableHeader,
@@ -10,7 +10,15 @@ import {
   TableCell,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Pencil } from "lucide-react";
+import { Pencil, DollarSign, Users, CreditCard, Activity } from "lucide-react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+  CardFooter,
+  CardDescription,
+} from "@/components/ui/card";
 
 const DriverDashboard = () => {
   const [orders, setOrders] = useState<any[]>([]);
@@ -30,20 +38,33 @@ const DriverDashboard = () => {
     loadOrders();
   }, []);
 
-  const handleStatus = (order: any) => {
-    const steps = ["Review order", "Packed", "Shipped", "Delivered"];
-    const currentIndex = steps.indexOf(order.status);
-
-    if (currentIndex < steps.length - 1) {
-      const next = steps[currentIndex + 1];
-      updateShipment(order.trackingNo, { status: next });
-      loadOrders();
-    }
-  };
-
   return (
     <div className="p-10">
       <h1 className="text-3xl font-bold mb-6">Driver Dashboard</h1>
+
+      {/* Stats Cards Section */}
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-6">
+        {[
+          { title: "Total Revenue", icon: DollarSign, value: "$45,231.89", description: "+20.1% from last month" },
+          { title: "Subscriptions", icon: Users, value: "+2,350", description: "+180.1% from last month" },
+          { title: "Sales", icon: CreditCard, value: "+12,234", description: "+19% from last month" },
+          { title: "Active Now", icon: Activity, value: "+573", description: "+201 since last hour" },
+        ].map(({ title, icon: Icon, value, description }) => (
+          <Card key={title} className="w-full p-6">
+            <CardHeader>
+              <CardTitle>{title}</CardTitle>
+              <Icon className="w-5 h-5 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{value}</div>
+              <CardDescription>{description}</CardDescription>
+            </CardContent>
+            <CardFooter>
+              <p className="text-xs text-muted-foreground">Updated recently</p>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
 
       {orders.length === 0 ? (
         <p className="text-muted-foreground">No active deliveries.</p>
@@ -55,7 +76,7 @@ const DriverDashboard = () => {
                 <TableHead className="px-4 py-3">Tracking No.</TableHead>
                 <TableHead className="px-4 py-3">Receiver</TableHead>
                 <TableHead className="px-4 py-3">Status</TableHead>
-                <TableHead className="px-4 py-3">Update</TableHead>
+                <TableHead className="px-4 py-3">Courier</TableHead>
                 <TableHead className="px-4 py-3">Edit</TableHead>
               </TableRow>
             </TableHeader>
@@ -76,13 +97,7 @@ const DriverDashboard = () => {
                     </span>
                   </TableCell>
                   <TableCell className="px-4 py-3">
-                    <Button
-                      onClick={() => handleStatus(order)}
-                      size="sm"
-                      disabled={order.status === "Delivered"}
-                    >
-                      {order.status === "Delivered" ? "Completed" : "Update"}
-                    </Button>
+                    {order.returnAssignedTo || order.assignedDriver || "Not Assigned"}
                   </TableCell>
                   <TableCell className="px-4 py-3">
                     <Button
