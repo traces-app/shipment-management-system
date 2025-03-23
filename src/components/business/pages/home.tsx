@@ -277,8 +277,8 @@ const Home = () => {
       </div>
 
       {/* Table Container with Border, Curved Edges & Minimal Look */}
-      <div className="mt-10 w-full max-w-[100%] mx-auto rounded-lg overflow-hidden shadow-lg border border-gray-300">
-        <Table className="w-full bg-white border-collapse rounded-lg">
+      <div className="mt-10 w-full max-w-[100%] mx-auto rounded-lg overflow-hidden shadow-lg border border-gray-100">
+        <Table className="w-full border-collapse rounded-lg">
           {/* Table Header */}
           <TableHeader className="text-lg font-semibold text-center text-gray-600 bg-gray-100 border-b border-gray-300">
             <TableRow>

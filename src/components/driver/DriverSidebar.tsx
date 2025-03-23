@@ -33,6 +33,11 @@ const driverMenuItems = [
     url: "/driver-order-details",
     icon: User,
   },
+  {
+      title: "Account",
+      url: "/driver/account",
+      icon: User,
+  },
 ];
 
 const DriverSidebar = () => {

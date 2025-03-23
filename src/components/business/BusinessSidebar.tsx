@@ -42,7 +42,7 @@ const menuItems = [
   },
   {
     title: "Account",
-    url: "/account",
+    url: "/business/account",
     icon: User,
   },
 ];

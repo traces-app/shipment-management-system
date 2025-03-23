@@ -282,13 +282,14 @@ import Home from "./components/business/pages/home";
 import ManualOrder from "./components/business/pages/manualorder";
 import OrderOverview from "./components/business/pages/orderoverview";
 import Returns from "./components/business/pages/returns";
-import Account from "./components/business/pages/account";
+import BusinessAccount from "./components/business/pages/account";
 import OrderDetails from "./components/business/pages/orderdetails";
 
 // Driver pages
 import DriverDashboard from "./components/driver/pages/driverdashboard";
 import DriverDeliveries from "./components/driver/pages/deliveries";
-import DriverOrderDetails from "./components/driver/pages/orderdetails";
+// import DriverOrderDetails from "./components/driver/pages/orderdetails";
+import DriverAccount from "./components/driver/pages/account";
 
 import Layout from "./app/layout";
 
@@ -310,14 +311,15 @@ function App() {
                 <Route path="/manual-order" element={<ManualOrder />} />
                 <Route path="/order-overview" element={<OrderOverview />} />
                 <Route path="/returns" element={<Returns />} />
-                <Route path="/account" element={<Account />} />
+                <Route path="/business/account" element={<BusinessAccount />} />
                 <Route path="/order-details/:trackingNo" element={<OrderDetails />} />
 
                 {/* ✅ Driver Routes */}
                 <Route path="/driver-dashboard" element={<DriverDashboard />} />
                 <Route path="/driver-deliveries" element={<DriverDeliveries />} />
-                <Route path="/driver-order-details" element={<DriverOrderDetails />} />
-              </Routes>
+                <Route path="/driver/account" element={<DriverAccount />} />
+                
+                </Routes>
             </Layout>
           }
         />
