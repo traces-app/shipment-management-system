@@ -184,15 +184,272 @@
 // export default Home;
 
 
+// import {
+//   Card,
+//   CardHeader,
+//   CardTitle,
+//   CardDescription,
+//   CardContent,
+//   CardFooter,
+// } from "@/components/ui/card"; // Import ShadCN Card components
+
+// import {
+//   Table,
+//   TableHeader,
+//   TableRow,
+//   TableHead,
+//   TableBody,
+//   TableCell,
+// } from "@/components/ui/table";
+
+// import { DollarSign, Users, CreditCard, Activity } from "lucide-react"; // Import icons
+
+// const Home = () => {
+//   const shipments = [
+//     {
+//       trackingNo: "TX 768 431",
+//       sender: "Amazon.com, Inc",
+//       receiver: "Lithika Damnod",
+//       createdDate: "01/02/2025",
+//       estimatedDelivery: "15/02/2025",
+//       status: "Delivered",
+//     },
+//     {
+//       trackingNo: "TX 768 432",
+//       sender: "Amazon.com, Inc",
+//       receiver: "Lithika Damnod",
+//       createdDate: "01/02/2025",
+//       estimatedDelivery: "15/02/2025",
+//       status: "In Transit",
+//     },
+//     {
+//       trackingNo: "TX 768 433",
+//       sender: "Amazon.com, Inc",
+//       receiver: "Lithika Damnod",
+//       createdDate: "01/02/2025",
+//       estimatedDelivery: "15/02/2025",
+//       status: "Pending",
+//     },
+//     {
+//       trackingNo: "TX 768 434",
+//       sender: "Amazon.com, Inc",
+//       receiver: "Lithika Damnod",
+//       createdDate: "01/02/2025",
+//       estimatedDelivery: "15/02/2025",
+//       status: "Delayed",
+//     },
+//     {
+//       trackingNo: "TX 768 435",
+//       sender: "Amazon.com, Inc",
+//       receiver: "Lithika Damnod",
+//       createdDate: "01/02/2025",
+//       estimatedDelivery: "15/02/2025",
+//       status: "Delivered",
+//     },
+//   ];
+
+//   return (
+//     <div className="p-10">
+//       <h1 className="mb-6 text-3xl font-bold">Dashboard</h1>
+
+//       {/* Stats Cards Section */}
+//       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+//         {[
+//           { title: "Total Revenue", icon: DollarSign, value: "$45,231.89", description: "+20.1% from last month" },
+//           { title: "Subscriptions", icon: Users, value: "+2,350", description: "+180.1% from last month" },
+//           { title: "Sales", icon: CreditCard, value: "+12,234", description: "+19% from last month" },
+//           { title: "Active Now", icon: Activity, value: "+573", description: "+201 since last hour" },
+//         ].map(({ title, icon: Icon, value, description }) => (
+//           <Card key={title} className="w-[300px] p-6">
+//             <CardHeader>
+//               <CardTitle>{title}</CardTitle>
+//               <Icon className="w-5 h-5 text-muted-foreground" />
+//             </CardHeader>
+//             <CardContent>
+//               <div className="text-2xl font-bold">{value}</div>
+//               <CardDescription>{description}</CardDescription>
+//             </CardContent>
+//             <CardFooter>
+//               <p className="text-xs text-muted-foreground">Updated recently</p>
+//             </CardFooter>
+//           </Card>
+//         ))}
+//       </div>
+
+//       {/* Table Container with Border, Curved Edges & Minimal Look */}
+//       <div className="mt-10 w-full max-w-[100%] mx-auto rounded-lg overflow-hidden shadow-lg border border-gray-300">
+//         <Table className="w-full bg-white border-collapse rounded-lg">
+//           {/* Table Header */}
+//           <TableHeader className="text-lg font-semibold text-center text-gray-600 bg-gray-100 border-b border-gray-300">
+//             <TableRow>
+//               <TableHead className="px-4 py-3 text-center">Tracking No.</TableHead>
+//               <TableHead className="px-4 py-3 text-center">Sender</TableHead>
+//               <TableHead className="px-4 py-3 text-center">Receiver</TableHead>
+//               <TableHead className="px-4 py-3 text-center">Shipment Created Date</TableHead>
+//               <TableHead className="px-4 py-3 text-center">Estimated Delivery Date</TableHead>
+//               <TableHead className="px-4 py-3 text-center">Status</TableHead>
+//             </TableRow>
+//           </TableHeader>
+
+//           {/* Table Body */}
+//           <TableBody>
+//             {shipments.slice(0, 5).map((shipment, index) => (
+//               <TableRow
+//                 key={index}
+//                 className="text-lg text-center border-t border-gray-200 hover:bg-gray-50"
+//               >
+//                 <TableCell className="px-4 py-3 font-semibold">{shipment.trackingNo}</TableCell>
+//                 <TableCell className="px-4 py-3">{shipment.sender}</TableCell>
+//                 <TableCell className="px-4 py-3">{shipment.receiver}</TableCell>
+//                 <TableCell className="px-4 py-3">{shipment.createdDate}</TableCell>
+//                 <TableCell className="px-4 py-3">{shipment.estimatedDelivery}</TableCell>
+//                 <TableCell className="px-4 py-3">
+//                   <span
+//                     className={`px-3 py-1 text-base font-medium rounded-md ${
+//                       shipment.status === "Delivered"
+//                         ? "bg-green-100 text-green-600"
+//                         : shipment.status === "In Transit"
+//                         ? "bg-yellow-100 text-yellow-600"
+//                         : shipment.status === "Pending"
+//                         ? "bg-blue-100 text-blue-600"
+//                         : "bg-red-100 text-red-600"
+//                     }`}
+//                   >
+//                     {shipment.status}
+//                   </span>
+//                 </TableCell>
+//               </TableRow>
+//             ))}
+//           </TableBody>
+//         </Table>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Home;
+
+// import {
+//   Card,
+//   CardHeader,
+//   CardTitle,
+//   CardContent,
+//   CardDescription,
+//   CardFooter,
+// } from "@/components/ui/card";
+// import {
+//   Table,
+//   TableHeader,
+//   TableRow,
+//   TableHead,
+//   TableBody,
+//   TableCell,
+// } from "@/components/ui/table";
+// import { DollarSign, Users, CreditCard, Activity, Pencil } from "lucide-react";
+// import { useNavigate } from "react-router-dom";
+
+// const Home = () => {
+//   const navigate = useNavigate();
+
+//   const shipments = [
+//     {
+//       trackingNo: "TX 768 431",
+//       senderName: "Amazon.com, Inc",
+//       receiverName: "Lithika Damnod",
+//       createdDate: "01/02/2025",
+//       estimatedDelivery: "15/02/2025",
+//       courier: "FedEx",
+//       status: "Delivered",
+//     },
+//     {
+//       trackingNo: "TX 768 432",
+//       senderName: "Amazon.com, Inc",
+//       receiverName: "Lithika Damnod",
+//       createdDate: "01/02/2025",
+//       estimatedDelivery: "15/02/2025",
+//       courier: "DHL",
+//       status: "In Transit",
+//     },
+//   ];
+
+//   return (
+//     <div className="p-10">
+//       <h1 className="mb-6 text-3xl font-bold">Dashboard</h1>
+
+//       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-10">
+//         {[
+//           { title: "Total Revenue", icon: DollarSign, value: "$45,231.89", description: "+20.1% from last month" },
+//           { title: "Subscriptions", icon: Users, value: "+2,350", description: "+180.1% from last month" },
+//           { title: "Sales", icon: CreditCard, value: "+12,234", description: "+19% from last month" },
+//           { title: "Active Now", icon: Activity, value: "+573", description: "+201 since last hour" },
+//         ].map(({ title, icon: Icon, value, description }) => (
+//           <Card key={title} className="p-6">
+//             <CardHeader>
+//               <CardTitle>{title}</CardTitle>
+//               <Icon className="w-5 h-5 text-muted-foreground" />
+//             </CardHeader>
+//             <CardContent>
+//               <div className="text-2xl font-bold">{value}</div>
+//               <CardDescription>{description}</CardDescription>
+//             </CardContent>
+//             <CardFooter>
+//               <p className="text-xs text-muted-foreground">Updated recently</p>
+//             </CardFooter>
+//           </Card>
+//         ))}
+//       </div>
+
+//       <div className="overflow-x-auto border rounded-lg shadow-lg max-w-full">
+//         <Table className="min-w-full text-base text-center">
+//           <TableHeader className="bg-gray-100 text-gray-700 font-semibold">
+//             <TableRow>
+//               {["Shipping ID", "Sender", "Receiver", "Shipment Created Date", "Estimated Delivery Date", "Courier", "Status", "Details"].map((header) => (
+//                 <TableHead key={header} className="text-center px-6">{header}</TableHead>
+//               ))}
+//             </TableRow>
+//           </TableHeader>
+//           <TableBody>
+//             {shipments.map((order, index) => (
+//               <TableRow key={`${order.trackingNo}-${index}`}>
+//                 <TableCell className="px-6">{order.trackingNo}</TableCell>
+//                 <TableCell className="px-6">{order.senderName}</TableCell>
+//                 <TableCell className="px-6">{order.receiverName}</TableCell>
+//                 <TableCell className="px-6">{order.createdDate}</TableCell>
+//                 <TableCell className="px-6">{order.estimatedDelivery}</TableCell>
+//                 <TableCell className="px-6">{order.courier}</TableCell>
+//                 <TableCell className="px-6">{order.status}</TableCell>
+//                 <TableCell className="px-6">
+//                   <button
+//                     onClick={() => navigate(`/order-details/${order.trackingNo}`)}
+//                     className="text-black hover:underline"
+//                   >
+//                     <Pencil className="w-5 h-5" />
+//                   </button>
+//                 </TableCell>
+//               </TableRow>
+//             ))}
+//           </TableBody>
+//         </Table>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Home;
+
+
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getShipments } from "@/utils/localStorage";
+import { Pencil } from "lucide-react";
 import {
   Card,
   CardHeader,
   CardTitle,
-  CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card"; // Import ShadCN Card components
-
+  CardDescription,
+} from "@/components/ui/card";
 import {
   Table,
   TableHeader,
@@ -202,121 +459,67 @@ import {
   TableCell,
 } from "@/components/ui/table";
 
-import { DollarSign, Users, CreditCard, Activity } from "lucide-react"; // Import icons
-
 const Home = () => {
-  const shipments = [
-    {
-      trackingNo: "TX 768 431",
-      sender: "Amazon.com, Inc",
-      receiver: "Lithika Damnod",
-      createdDate: "01/02/2025",
-      estimatedDelivery: "15/02/2025",
-      status: "Delivered",
-    },
-    {
-      trackingNo: "TX 768 432",
-      sender: "Amazon.com, Inc",
-      receiver: "Lithika Damnod",
-      createdDate: "01/02/2025",
-      estimatedDelivery: "15/02/2025",
-      status: "In Transit",
-    },
-    {
-      trackingNo: "TX 768 433",
-      sender: "Amazon.com, Inc",
-      receiver: "Lithika Damnod",
-      createdDate: "01/02/2025",
-      estimatedDelivery: "15/02/2025",
-      status: "Pending",
-    },
-    {
-      trackingNo: "TX 768 434",
-      sender: "Amazon.com, Inc",
-      receiver: "Lithika Damnod",
-      createdDate: "01/02/2025",
-      estimatedDelivery: "15/02/2025",
-      status: "Delayed",
-    },
-    {
-      trackingNo: "TX 768 435",
-      sender: "Amazon.com, Inc",
-      receiver: "Lithika Damnod",
-      createdDate: "01/02/2025",
-      estimatedDelivery: "15/02/2025",
-      status: "Delivered",
-    },
-  ];
+  const [shipments, setShipments] = useState<any[]>([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const load = () => setShipments(getShipments());
+    load();
+    window.addEventListener("storage", load);
+    return () => window.removeEventListener("storage", load);
+  }, []);
 
   return (
     <div className="p-10">
-      <h1 className="mb-6 text-3xl font-bold">Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
 
-      {/* Stats Cards Section */}
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Stats */}
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-10">
         {[
-          { title: "Total Revenue", icon: DollarSign, value: "$45,231.89", description: "+20.1% from last month" },
-          { title: "Subscriptions", icon: Users, value: "+2,350", description: "+180.1% from last month" },
-          { title: "Sales", icon: CreditCard, value: "+12,234", description: "+19% from last month" },
-          { title: "Active Now", icon: Activity, value: "+573", description: "+201 since last hour" },
-        ].map(({ title, icon: Icon, value, description }) => (
-          <Card key={title} className="w-[300px] p-6">
-            <CardHeader>
-              <CardTitle>{title}</CardTitle>
-              <Icon className="w-5 h-5 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{value}</div>
-              <CardDescription>{description}</CardDescription>
-            </CardContent>
-            <CardFooter>
-              <p className="text-xs text-muted-foreground">Updated recently</p>
-            </CardFooter>
+          { title: "Total Revenue", value: "$45,231.89" },
+          { title: "Subscriptions", value: "+2,350" },
+          { title: "Sales", value: "+12,234" },
+          { title: "Active Now", value: "+573" },
+        ].map(({ title, value }, i) => (
+          <Card key={i} className="p-6">
+            <CardHeader><CardTitle>{title}</CardTitle></CardHeader>
+            <CardContent><div className="text-2xl font-bold">{value}</div></CardContent>
+            <CardFooter><CardDescription>Updated recently</CardDescription></CardFooter>
           </Card>
         ))}
       </div>
 
-      {/* Table Container with Border, Curved Edges & Minimal Look */}
-      <div className="mt-10 w-full max-w-[100%] mx-auto rounded-lg overflow-hidden shadow-lg border border-gray-300">
-        <Table className="w-full bg-white border-collapse rounded-lg">
-          {/* Table Header */}
-          <TableHeader className="text-lg font-semibold text-center text-gray-600 bg-gray-100 border-b border-gray-300">
+      {/* Orders Table */}
+      <div className="overflow-x-auto border rounded-lg shadow-lg max-w-full">
+        <Table className="min-w-full text-base text-center">
+          <TableHeader className="bg-gray-100 text-gray-700 font-semibold">
             <TableRow>
-              <TableHead className="px-4 py-3 text-center">Tracking No.</TableHead>
-              <TableHead className="px-4 py-3 text-center">Sender</TableHead>
-              <TableHead className="px-4 py-3 text-center">Receiver</TableHead>
-              <TableHead className="px-4 py-3 text-center">Shipment Created Date</TableHead>
-              <TableHead className="px-4 py-3 text-center">Estimated Delivery Date</TableHead>
-              <TableHead className="px-4 py-3 text-center">Status</TableHead>
+              {["Shipping ID", "Sender", "Receiver", "Shipment Created Date", "Estimated Delivery Date", "Courier", "Status", "Details"].map((h) => (
+                <TableHead key={h} className="text-center px-6">{h}</TableHead>
+              ))}
             </TableRow>
           </TableHeader>
-
-          {/* Table Body */}
           <TableBody>
-            {shipments.slice(0, 5).map((shipment, index) => (
-              <TableRow
-                key={index}
-                className="text-lg text-center border-t border-gray-200 hover:bg-gray-50"
-              >
-                <TableCell className="px-4 py-3 font-semibold">{shipment.trackingNo}</TableCell>
-                <TableCell className="px-4 py-3">{shipment.sender}</TableCell>
-                <TableCell className="px-4 py-3">{shipment.receiver}</TableCell>
-                <TableCell className="px-4 py-3">{shipment.createdDate}</TableCell>
-                <TableCell className="px-4 py-3">{shipment.estimatedDelivery}</TableCell>
-                <TableCell className="px-4 py-3">
-                  <span
-                    className={`px-3 py-1 text-base font-medium rounded-md ${
-                      shipment.status === "Delivered"
-                        ? "bg-green-100 text-green-600"
-                        : shipment.status === "In Transit"
-                        ? "bg-yellow-100 text-yellow-600"
-                        : shipment.status === "Pending"
-                        ? "bg-blue-100 text-blue-600"
-                        : "bg-red-100 text-red-600"
-                    }`}
-                  >
-                    {shipment.status}
+            {shipments.map((order, index) => (
+              <TableRow key={`${order.trackingNo}-${index}`}>
+                <TableCell className="px-6">{order.trackingNo}</TableCell>
+                <TableCell className="px-6">{order.senderName}</TableCell>
+                <TableCell className="px-6">{order.receiverName}</TableCell>
+                <TableCell className="px-6">{order.createdDate}</TableCell>
+                <TableCell className="px-6">{order.estimatedDelivery}</TableCell>
+                <TableCell className="px-6">{order.courier}</TableCell>
+                <TableCell className="px-6">
+                  <span className={`px-3 py-1 text-sm rounded-md font-medium ${
+                    order.status === "Delivered" ? "bg-green-100 text-green-600" : "bg-yellow-100 text-yellow-700"
+                  }`}>
+                    {order.status}
                   </span>
+                </TableCell>
+                <TableCell className="px-6">
+                  <button onClick={() => navigate(`/order-details/${order.trackingNo}`)}>
+                    <Pencil className="w-5 h-5 text-blue-600" />
+                  </button>
                 </TableCell>
               </TableRow>
             ))}
@@ -328,3 +531,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

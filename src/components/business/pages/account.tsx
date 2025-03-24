@@ -548,7 +548,7 @@ export default function AccountPage() {
             </Button>
           )}
         </div>
-        <Breadcrumb>
+        {/* <Breadcrumb>
           <BreadcrumbList className="flex items-center gap-1">
             <BreadcrumbItem>
               <BreadcrumbLink className="text-colors-neutral-400 text-sm">Dashboard</BreadcrumbLink>
@@ -560,7 +560,7 @@ export default function AccountPage() {
               <BreadcrumbLink className="text-colors-cerulean-blue-600 text-sm font-bold">Account</BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
-        </Breadcrumb>
+        </Breadcrumb> */}
       </header>
 
       {/* Main Content */}

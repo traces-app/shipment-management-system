@@ -439,266 +439,752 @@
 
 // export default ManualOrder;
 
-import React, { useState } from "react";
+// import React, { useState } from "react";
+// import { Button } from "@/components/ui/button";
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardHeader,
+//   CardTitle,
+// } from "@/components/ui/card";
+// import { Input } from "@/components/ui/input";
+// import { Label } from "@/components/ui/label";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
+
+// // ✅ Reusable Form Field Component
+// interface FormFieldProps {
+//   label: string;
+//   placeholder: string;
+//   value: string;
+//   required?: boolean;
+//   hint?: string;
+// }
+
+// const FormField: React.FC<FormFieldProps> = ({
+//   label,
+//   placeholder,
+//   value,
+//   required = false,
+//   hint,
+// }) => {
+//   const [inputValue, setInputValue] = useState(value);
+//   const [error, setError] = useState("");
+
+//   const handleBlur = () => {
+//     if (required && inputValue.trim() === "") {
+//       setError(`${label} is required.`);
+//     } else {
+//       setError("");
+//     }
+//   };
+
+//   return (
+//     <div className="flex flex-col gap-1.5 w-full">
+//       <div className="flex flex-col gap-1 w-full">
+//         <Label className="text-dark-grey font-bold text-[14px] leading-[150%]">
+//           {label}
+//         </Label>
+//         {hint && (
+//           <span className="text-xs text-colors-neutral-400 italic">{hint}</span>
+//         )}
+//       </div>
+//       <Input
+//         className={`h-[52px] px-4 py-4 rounded-xl border-[1.6px] ${
+//           error
+//             ? "border-red-500"
+//             : "border-colors-neutral-200 focus:border-colors-cerulean-blue-600"
+//         } focus:ring-0`}
+//         placeholder={placeholder}
+//         defaultValue={value}
+//         onChange={(e) => setInputValue(e.target.value)}
+//         onBlur={handleBlur}
+//       />
+//       {error && <span className="text-red-500 text-xs mt-1">{error}</span>}
+//     </div>
+//   );
+// };
+
+// // ✅ New: Dimension Field Component
+// interface DimensionFieldProps {
+//   label: string;
+//   required?: boolean;
+//   hint?: string;
+// }
+
+// const DimensionField: React.FC<DimensionFieldProps> = ({
+//   label,
+//   required = false,
+//   hint,
+// }) => {
+//   const [value, setValue] = useState("");
+//   const [error, setError] = useState("");
+
+//   const handleBlur = () => {
+//     if (required && value.trim() === "") {
+//       setError(`${label} is required.`);
+//     } else {
+//       setError("");
+//     }
+//   };
+
+//   return (
+//     <div className="flex flex-col gap-1.5 w-full">
+//       {hint && (
+//         <span className="text-xs text-colors-neutral-400 italic">{hint}</span>
+//       )}
+//       <Input
+//         className={`h-[52px] px-4 py-4 rounded-xl border-[1.6px] ${
+//           error
+//             ? "border-red-500"
+//             : "border-colors-neutral-200 focus:border-colors-cerulean-blue-600"
+//         } focus:ring-0 font-bold text-colors-neutral-800`}
+//         placeholder={label}
+//         value={value}
+//         onChange={(e) => setValue(e.target.value)}
+//         onBlur={handleBlur}
+//       />
+//       {error && <span className="text-red-500 text-xs mt-1">{error}</span>}
+//     </div>
+//   );
+// };
+
+// // ✅ Data
+// const senderInfo = {
+//   title: "Sender Information",
+// };
+
+// const receiverInfo = {
+//   title: "Receiver Information",
+// };
+
+// const packageInfo = {
+//   title: "Package & Tracking Details",
+//   dimensions: [
+//     { label: "Lenght",},
+//     { label: "Width",},
+//     { label: "Height",},
+//   ],
+// };
+
+// // ✅ Main Container
+// const Container = () => {
+//   return (
+//     <main className="flex flex-col items-start gap-[22px] p-8">
+//       <header className="flex flex-col items-start gap-2">
+//         <h1 className="text-[#2a2a2a] text-[24px] leading-[130%] font-semibold">
+//           Manual Order Entry
+//         </h1>
+//       </header>
+
+//       <div className="flex items-start gap-[22px] w-full">
+//         {/* Sender Info */}
+//         <Card className="w-[600px] rounded-3xl border-colors-neutral-100">
+//           <CardHeader className="pb-0">
+//             <CardTitle className="text-[22px] text-colors-neutral-800 font-semibold leading-[130%]">
+//               {senderInfo.title}
+//             </CardTitle>
+//           </CardHeader>
+//           <CardContent className="flex flex-col gap-4 pt-0">
+//             <FormField label="Full Name" placeholder="Enter your name" value="" required />
+//             <FormField label="Address" placeholder="Enter your address" value="" required />
+//             <div className="flex gap-4 w-full">
+//               <FormField label="Email" placeholder="Enter your email" value="" required />
+//               <FormField label="Telephone No." placeholder="Enter your phone number" value="" required />
+//             </div>
+//           </CardContent>
+//         </Card>
+
+//         {/* Package Info */}
+//         <div className="flex flex-col flex-1 gap-4">
+//           <Card className="rounded-3xl border-colors-neutral-100">
+//             <CardHeader className="pb-0">
+//               <CardTitle className="text-[22px] text-colors-neutral-800 font-semibold leading-[130%]">
+//                 {packageInfo.title}
+//               </CardTitle>
+//             </CardHeader>
+
+//             <CardContent className="flex flex-col gap-4 pt-0">
+//               {/* Courier Service */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <Label className="text-dark-grey font-bold text-[14px] leading-[150%]">
+//                   Courier Service
+//                 </Label>
+//                 <Select>
+//                   <SelectTrigger className="h-[52px] px-4 py-4 rounded-xl border-[1.6px] border-colors-neutral-200">
+//                     <SelectValue placeholder="Select a courier service" />
+//                   </SelectTrigger>
+//                   <SelectContent>
+//                     <SelectItem value="option1">Option 1</SelectItem>
+//                     <SelectItem value="option2">Option 2</SelectItem>
+//                     <SelectItem value="option3">Option 3</SelectItem>
+//                   </SelectContent>
+//                 </Select>
+//               </div>
+
+//               {/* Package Type */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <Label className="text-dark-grey font-bold text-[14px] leading-[150%]">
+//                   Package Type
+//                 </Label>
+//                 <Select>
+//                   <SelectTrigger className="h-[52px] px-4 py-4 rounded-xl border-[1.6px] border-colors-neutral-200">
+//                     <SelectValue placeholder="Select a package type" />
+//                   </SelectTrigger>
+//                   <SelectContent>
+//                     <SelectItem value="option1">Option 1</SelectItem>
+//                     <SelectItem value="option2">Option 2</SelectItem>
+//                     <SelectItem value="option3">Option 3</SelectItem>
+//                   </SelectContent>
+//                 </Select>
+//               </div>
+
+//               {/* Weight */}
+//               <FormField label="Weight(kg)" placeholder="Package weight" value="" required />
+
+//               {/* Dimensions */}
+//               <div>
+//                 <Label className="text-dark-grey font-bold text-[14px] mb-1.5 block">
+//                   Dimensions(cm)
+//                 </Label>
+//                 <div className="flex gap-4 w-full">
+//                   {packageInfo.dimensions.map((dim, index) => (
+//                     <DimensionField
+//                       key={index}
+//                       label={dim.label}
+//                       required
+//                     />
+//                   ))}
+//                 </div>
+//               </div>
+//             </CardContent>
+//           </Card>
+
+//           {/* Buttons */}
+//           <div className="flex justify-end gap-1 w-full">
+//             <Button
+//               variant="outline"
+//               className="bg-colors-background-light border-colors-cerulean-blue-600 text-colors-cerulean-blue-600 font-bold px-6 py-3 h-auto rounded-xl"
+//             >
+//               Discard Changes
+//             </Button>
+//             <Button className="bg-colors-cerulean-blue-600 text-white font-bold px-6 py-3 h-auto rounded-xl">
+//               Save&nbsp;&nbsp;Changes
+//             </Button>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Receiver Info */}
+//       <Card className="w-[600px] rounded-3xl border-colors-neutral-100">
+//         <CardHeader className="pb-0">
+//           <CardTitle className="text-[22px] text-colors-neutral-800 font-semibold leading-[130%]">
+//             {receiverInfo.title}
+//           </CardTitle>
+//         </CardHeader>
+//         <CardContent className="flex flex-col gap-4 pt-0">
+//           <FormField label="Full Name" placeholder="Enter your name" value="" required />
+//           <FormField label="Address" placeholder="Enter your address" value="" required />
+//           <div className="flex gap-4 w-full">
+//             <FormField label="Email" placeholder="Enter your email" value="" required />
+//             <FormField label="Telephone No." placeholder="Enter your phone number" value="" required />
+//           </div>
+//         </CardContent>
+//       </Card>
+//     </main>
+//   );
+// };
+
+// export default Container;
+
+// import { Button } from "@/components/ui/button";
+// import { Card, CardContent } from "@/components/ui/card";
+// import { Input } from "@/components/ui/input";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
+// import React from "react";
+
+// // Data for form sections
+// const senderReceiverFields = [
+//   {
+//     id: "fullName",
+//     label: "Full Name",
+//     placeholder: "Enter your name",
+//     required: true,
+//   },
+//   { id: "address", label: "Address", placeholder: "Enter your address" },
+//   { id: "email", label: "Email", placeholder: "Enter your email" },
+//   {
+//     id: "telephone",
+//     label: "Telephone No.",
+//     placeholder: "Enter your phone number",
+//   },
+// ];
+
+// const courierFields = [
+//   {
+//     id: "courierService",
+//     label: "Courier Service",
+//     placeholder: "Select a courier service",
+//     type: "select",
+//   },
+//   {
+//     id: "packageType",
+//     label: "Package Type",
+//     placeholder: "Select a package type",
+//     type: "select",
+//     section: "Package & Tracking Details",
+//   },
+//   {
+//     id: "weight",
+//     label: "Weight(kg)",
+//     placeholder: "Package weight",
+//     section: "Package & Tracking Details",
+//   },
+//   {
+//     id: "dimensions",
+//     label: "Dimensions(cm)",
+//     placeholders: ["L", "W", "H"],
+//     section: "Package & Tracking Details",
+//   },
+//   {
+//     id: "paymentMethod",
+//     label: "Payment Method",
+//     placeholder: "Select a payment method",
+//     type: "select",
+//     section: "Payment Information",
+//   },
+//   {
+//     id: "paymentStatus",
+//     label: "Payment Status",
+//     placeholder: "Select a payment status",
+//     type: "select",
+//     section: "Payment Information",
+//   },
+//   {
+//     id: "totalCost",
+//     label: "Total Cost",
+//     placeholder: "Enter total cost",
+//     section: "Payment Information",
+//   },
+// ];
+
+// export default function Container() {
+//   return (
+//     <main className="flex flex-col items-start gap-[22px] p-8">
+//       <header className="flex flex-col items-start gap-2">
+//         <h1 className="text-[40px] font-bold text-[#2a2a2a] leading-[52px] [font-family:'Plus_Jakarta_Sans-Bold',Helvetica]">
+//           Manual Order Entry
+//         </h1>
+//       </header>
+
+//       <div className="flex items-start gap-[22px] w-full">
+//         {/* Sender and Receiver Information Card */}
+//         <Card className="w-[600px] rounded-3xl border-colors-neutral-100">
+//           <CardContent className="flex flex-col gap-6 p-6">
+//             {/* Sender Information Section */}
+//             <section className="flex flex-col items-start gap-0">
+//               <h2 className="text-[22px] font-bold text-colors-neutral-800 leading-[28.6px] [font-family:'Plus_Jakarta_Sans-Bold',Helvetica]">
+//                 Sender Information
+//               </h2>
+//             </section>
+
+//             {/* Sender Form Fields */}
+//             <div className="flex flex-col gap-4 w-full">
+//               {senderReceiverFields.slice(0, 2).map((field) => (
+//                 <div
+//                   key={`sender-${field.id}`}
+//                   className="flex flex-col gap-1.5 w-full"
+//                 >
+//                   <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                     {field.label}
+//                   </label>
+//                   <Input
+//                     placeholder={field.placeholder}
+//                     required
+//                     className={`h-[52px] rounded-xl ${
+//                       field.id === "fullName"
+//                         ? "border-[1.6px] border-colors-cerulean-blue-600"
+//                         : "border-[1.6px] border-colors-neutral-200"
+//                     }`}
+//                   />
+//                 </div>
+//               ))}
+
+//               <div className="flex gap-4 w-full">
+//                 {senderReceiverFields.slice(2).map((field) => (
+//                   <div
+//                     key={`sender-${field.id}`}
+//                     className="flex-1 flex flex-col gap-1.5"
+//                   >
+//                     <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                       {field.label}
+//                     </label>
+//                     <Input
+//                       placeholder={field.placeholder}
+//                       required
+//                       className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                     />
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+
+//             {/* Receiver Information Section */}
+//             <section className="flex flex-col items-start gap-2">
+//               <h2 className="text-[22px] font-bold text-colors-neutral-800 leading-[28.6px] [font-family:'Plus_Jakarta_Sans-Bold',Helvetica]">
+//                 Receiver Information
+//               </h2>
+//             </section>
+
+//             {/* Receiver Form Fields */}
+//             <div className="flex flex-col gap-4 w-full">
+//               {senderReceiverFields.slice(0, 2).map((field) => (
+//                 <div
+//                   key={`receiver-${field.id}`}
+//                   className="flex flex-col gap-1.5 w-full"
+//                 >
+//                   <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                     {field.label}
+//                   </label>
+//                   <Input
+//                     placeholder={field.placeholder}
+//                     required
+//                     className={`h-[52px] rounded-xl ${
+//                       field.id === "fullName"
+//                         ? "border-[1.6px] border-colors-cerulean-blue-600"
+//                         : "border-[1.6px] border-colors-neutral-200"
+//                     }`}
+//                   />
+//                 </div>
+//               ))}
+//               <div className="flex gap-4 w-full">
+//                 {senderReceiverFields.slice(2).map((field) => (
+//                   <div
+//                     key={`receiver-${field.id}`}
+//                     className="flex-1 flex flex-col gap-1.5"
+//                   >
+//                     <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                       {field.label}
+//                     </label>
+//                     <Input
+//                       placeholder={field.placeholder}
+//                       required
+//                       className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                     />
+//                   </div>
+//                 ))}
+//               </div>
+//             </div>
+//           </CardContent>
+//         </Card>
+
+//         {/* Courier and Payment Details Card */}
+//         <div className="flex-1 flex flex-col gap-4">
+//           <Card className="rounded-3xl border-colors-neutral-100">
+//             <CardContent className="flex flex-col gap-4 p-6">
+//               {/* Courier Details Section */}
+//               <section className="flex flex-col gap-2 w-full">
+//                 <h2 className="text-[22px] font-bold text-colors-neutral-800-duplicate leading-[28.6px] [font-family:'Plus_Jakarta_Sans-Bold',Helvetica]">
+//                   Courier Details
+//                 </h2>
+//               </section>
+
+//               {/* Courier Service Field */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                   Courier Service
+//                 </label>
+//                 <Select>
+//                   <SelectTrigger
+//                     className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                     aria-required="true"
+//                   >
+//                     <SelectValue placeholder="Select a courier service" />
+//                   </SelectTrigger>
+//                   <SelectContent>
+//                     <SelectItem value="option1">DHL</SelectItem>
+//                     <SelectItem value="option2">UPS</SelectItem>
+//                     <SelectItem value="option3">Option 3</SelectItem>
+//                   </SelectContent>
+//                 </Select>
+//               </div>
+
+//               {/* Package & Tracking Details Section */}
+//               <section className="flex flex-col gap-2 w-full">
+//                 <h2 className="text-[22px] font-bold text-colors-neutral-800-duplicate leading-[28.6px] [font-family:'Plus_Jakarta_Sans-Bold',Helvetica]">
+//                   Package &amp; Tracking Details
+//                 </h2>
+//               </section>
+
+//               {/* Package Type Field */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                   Package Type
+//                 </label>
+//                 <Select>
+//                   <SelectTrigger
+//                     className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                     aria-required="true"
+//                   >
+//                     <SelectValue placeholder="Select a package type" />
+//                   </SelectTrigger>
+//                   <SelectContent>
+//                     <SelectItem value="option1">Box</SelectItem>
+//                     <SelectItem value="option2">Enveolpe</SelectItem>
+//                     <SelectItem value="option3">Barel</SelectItem>
+//                   </SelectContent>
+//                 </Select>
+//               </div>
+
+//               {/* Weight Field */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                   Weight(kg)
+//                 </label>
+//                 <Input
+//                   placeholder="Package weight"
+//                   required
+//                   className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                 />
+//               </div>
+
+//               {/* Dimensions Fields */}
+//               <div className="flex gap-4 w-full">
+//                 <div className="flex-1 flex flex-col gap-1.5">
+//                   <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                     Dimensions(cm)
+//                   </label>
+//                   <Input
+//                     placeholder="L"
+//                     required
+//                     className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                   />
+//                 </div>
+//                 <div className="flex-1 flex flex-col gap-1.5">
+//                   <div className="h-6"></div>
+//                   <Input
+//                     placeholder="W"
+//                     required
+//                     className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                   />
+//                 </div>
+//                 <div className="flex-1 flex flex-col gap-1.5">
+//                   <div className="h-6"></div>
+//                   <Input
+//                     placeholder="H"
+//                     required
+//                     className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                   />
+//                 </div>
+//               </div>
+
+//               {/* Payment Information Section */}
+//               <section className="flex flex-col gap-2 w-full">
+//                 <h2 className="text-[22px] font-bold text-colors-neutral-800-duplicate leading-[28.6px] [font-family:'Plus_Jakarta_Sans-Bold',Helvetica]">
+//                   Payment Information
+//                 </h2>
+//               </section>
+
+//               {/* Payment Method Field */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                   Payment Method
+//                 </label>
+//                 <Select>
+//                   <SelectTrigger
+//                     className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                     aria-required="true"
+//                   >
+//                     <SelectValue placeholder="Select a payment method" />
+//                   </SelectTrigger>
+//                   <SelectContent>
+//                     <SelectItem value="option1">Visa/Master</SelectItem>
+//                     <SelectItem value="option2">KOKO</SelectItem>
+//                     <SelectItem value="option3">Cash on Delivery</SelectItem>
+//                   </SelectContent>
+//                 </Select>
+//               </div>
+
+//               {/* Payment Status Field */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                   Payment Status
+//                 </label>
+//                 <Select>
+//                   <SelectTrigger
+//                     className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                     aria-required="true"
+//                   >
+//                     <SelectValue placeholder="Select a payment status" />
+//                   </SelectTrigger>
+//                   <SelectContent>
+//                     <SelectItem value="option1">Paid</SelectItem>
+//                     <SelectItem value="option2">Not</SelectItem>
+//                   </SelectContent>
+//                 </Select>
+//               </div>
+
+//               {/* Total Cost Field */}
+//               <div className="flex flex-col gap-1.5 w-full">
+//                 <label className="text-dark-grey font-text-text-bold-text-sm-bold font-[number:var(--text-text-bold-text-sm-bold-font-weight)]">
+//                   Total Cost
+//                 </label>
+//                 <Input
+//                   placeholder="Enter total cost"
+//                   required
+//                   className="h-[52px] rounded-xl border-[1.6px] border-colors-neutral-200"
+//                 />
+//               </div>
+//             </CardContent>
+//           </Card>
+
+//           {/* Action Buttons */}
+//           <div className="flex items-center justify-end gap-1 w-full">
+//             <Button
+//               variant="outline"
+//               className="bg-colors-background-light border-colors-cerulean-blue-600 text-colors-cerulean-blue-600 rounded-xl px-6 py-3 h-auto font-text-text-bold-text-sm-bold"
+//             >
+//               Discard Changes
+//             </Button>
+//             <Button className="bg-colors-cerulean-blue-600 text-white rounded-xl px-6 py-3 h-auto font-text-text-bold-text-sm-bold">
+//               Save&nbsp;&nbsp;Changes
+//             </Button>
+//           </div>
+//         </div>
+//       </div>
+//     </main>
+//   );
+// }
+
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { addShipment } from "@/utils/localStorage";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
-// ✅ Reusable Form Field Component
-interface FormFieldProps {
-  label: string;
-  placeholder: string;
-  value: string;
-  required?: boolean;
-  hint?: string;
-}
+const ManualOrder = () => {
+  const navigate = useNavigate();
 
-const FormField: React.FC<FormFieldProps> = ({
-  label,
-  placeholder,
-  value,
-  required = false,
-  hint,
-}) => {
-  const [inputValue, setInputValue] = useState(value);
-  const [error, setError] = useState("");
+  const [form, setForm] = useState({
+    senderName: "",
+    senderEmail: "",
+    senderAddress: "",
+    senderPhone: "",
+    receiverName: "",
+    receiverEmail: "",
+    receiverAddress: "",
+    receiverPhone: "",
+    packageType: "",
+    weight: "",
+    dimensions: { length: "", width: "", height: "" },
+    courier: "",
+  });
 
-  const handleBlur = () => {
-    if (required && inputValue.trim() === "") {
-      setError(`${label} is required.`);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    if (id.startsWith("dimension-")) {
+      const key = id.split("-")[1];
+      setForm((prev) => ({
+        ...prev,
+        dimensions: {
+          ...prev.dimensions,
+          [key]: value,
+        },
+      }));
     } else {
-      setError("");
+      setForm((prev) => ({ ...prev, [id]: value }));
     }
   };
 
-  return (
-    <div className="flex flex-col gap-1.5 w-full">
-      <div className="flex flex-col gap-1 w-full">
-        <Label className="text-dark-grey font-bold text-[14px] leading-[150%]">
-          {label}
-        </Label>
-        {hint && (
-          <span className="text-xs text-colors-neutral-400 italic">{hint}</span>
-        )}
-      </div>
-      <Input
-        className={`h-[52px] px-4 py-4 rounded-xl border-[1.6px] ${
-          error
-            ? "border-red-500"
-            : "border-colors-neutral-200 focus:border-colors-cerulean-blue-600"
-        } focus:ring-0`}
-        placeholder={placeholder}
-        defaultValue={value}
-        onChange={(e) => setInputValue(e.target.value)}
-        onBlur={handleBlur}
-      />
-      {error && <span className="text-red-500 text-xs mt-1">{error}</span>}
-    </div>
-  );
-};
+  const handleSubmit = () => {
+    const trackingNo = `TX-${Date.now()}`;
+    const newOrder = {
+      ...form,
+      trackingNo,
+      createdDate: new Date().toLocaleDateString("en-GB"),
+      estimatedDelivery: "28/03/2025",
+      status: "Review order",
+    };
 
-// ✅ New: Dimension Field Component
-interface DimensionFieldProps {
-  label: string;
-  required?: boolean;
-  hint?: string;
-}
-
-const DimensionField: React.FC<DimensionFieldProps> = ({
-  label,
-  required = false,
-  hint,
-}) => {
-  const [value, setValue] = useState("");
-  const [error, setError] = useState("");
-
-  const handleBlur = () => {
-    if (required && value.trim() === "") {
-      setError(`${label} is required.`);
-    } else {
-      setError("");
-    }
+    addShipment(newOrder);
+    navigate("/order-overview");
   };
 
   return (
-    <div className="flex flex-col gap-1.5 w-full">
-      {hint && (
-        <span className="text-xs text-colors-neutral-400 italic">{hint}</span>
-      )}
-      <Input
-        className={`h-[52px] px-4 py-4 rounded-xl border-[1.6px] ${
-          error
-            ? "border-red-500"
-            : "border-colors-neutral-200 focus:border-colors-cerulean-blue-600"
-        } focus:ring-0 font-bold text-colors-neutral-800`}
-        placeholder={label}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        onBlur={handleBlur}
-      />
-      {error && <span className="text-red-500 text-xs mt-1">{error}</span>}
-    </div>
-  );
-};
-
-// ✅ Data
-const senderInfo = {
-  title: "Sender Information",
-};
-
-const receiverInfo = {
-  title: "Receiver Information",
-};
-
-const packageInfo = {
-  title: "Package & Tracking Details",
-  dimensions: [
-    { label: "Lenght",},
-    { label: "Width",},
-    { label: "Height",},
-  ],
-};
-
-// ✅ Main Container
-const Container = () => {
-  return (
-    <main className="flex flex-col items-start gap-[22px] p-8">
-      <header className="flex flex-col items-start gap-2">
-        <h1 className="text-[#2a2a2a] text-[24px] leading-[130%] font-semibold">
-          Manual Order Entry
-        </h1>
-      </header>
-
-      <div className="flex items-start gap-[22px] w-full">
+    <div className="p-10 space-y-6">
+      <h1 className="text-2xl font-bold">Manual Order Entry</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Sender Info */}
-        <Card className="w-[600px] rounded-3xl border-colors-neutral-100">
-          <CardHeader className="pb-0">
-            <CardTitle className="text-[22px] text-colors-neutral-800 font-semibold leading-[130%]">
-              {senderInfo.title}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-4 pt-0">
-            <FormField label="Full Name" placeholder="Enter your name" value="" required />
-            <FormField label="Address" placeholder="Enter your address" value="" required />
-            <div className="flex gap-4 w-full">
-              <FormField label="Email" placeholder="Enter your email" value="" required />
-              <FormField label="Telephone No." placeholder="Enter your phone number" value="" required />
-            </div>
+        <Card>
+          <CardHeader><CardTitle>Sender Information</CardTitle></CardHeader>
+          <CardContent className="space-y-4">
+            <Label>Full Name</Label>
+            <Input id="senderName" value={form.senderName} onChange={handleChange} />
+            <Label>Email</Label>
+            <Input id="senderEmail" value={form.senderEmail} onChange={handleChange} />
+            <Label>Address</Label>
+            <Textarea id="senderAddress" value={form.senderAddress} onChange={handleChange} />
+            <Label>Phone</Label>
+            <Input id="senderPhone" value={form.senderPhone} onChange={handleChange} />
           </CardContent>
         </Card>
 
-        {/* Package Info */}
-        <div className="flex flex-col flex-1 gap-4">
-          <Card className="rounded-3xl border-colors-neutral-100">
-            <CardHeader className="pb-0">
-              <CardTitle className="text-[22px] text-colors-neutral-800 font-semibold leading-[130%]">
-                {packageInfo.title}
-              </CardTitle>
-            </CardHeader>
-
-            <CardContent className="flex flex-col gap-4 pt-0">
-              {/* Courier Service */}
-              <div className="flex flex-col gap-1.5 w-full">
-                <Label className="text-dark-grey font-bold text-[14px] leading-[150%]">
-                  Courier Service
-                </Label>
-                <Select>
-                  <SelectTrigger className="h-[52px] px-4 py-4 rounded-xl border-[1.6px] border-colors-neutral-200">
-                    <SelectValue placeholder="Select a courier service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="option1">Option 1</SelectItem>
-                    <SelectItem value="option2">Option 2</SelectItem>
-                    <SelectItem value="option3">Option 3</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Package Type */}
-              <div className="flex flex-col gap-1.5 w-full">
-                <Label className="text-dark-grey font-bold text-[14px] leading-[150%]">
-                  Package Type
-                </Label>
-                <Select>
-                  <SelectTrigger className="h-[52px] px-4 py-4 rounded-xl border-[1.6px] border-colors-neutral-200">
-                    <SelectValue placeholder="Select a package type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="option1">Option 1</SelectItem>
-                    <SelectItem value="option2">Option 2</SelectItem>
-                    <SelectItem value="option3">Option 3</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              {/* Weight */}
-              <FormField label="Weight(kg)" placeholder="Package weight" value="" required />
-
-              {/* Dimensions */}
-              <div>
-                <Label className="text-dark-grey font-bold text-[14px] mb-1.5 block">
-                  Dimensions(cm)
-                </Label>
-                <div className="flex gap-4 w-full">
-                  {packageInfo.dimensions.map((dim, index) => (
-                    <DimensionField
-                      key={index}
-                      label={dim.label}
-                      required
-                    />
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Buttons */}
-          <div className="flex justify-end gap-1 w-full">
-            <Button
-              variant="outline"
-              className="bg-colors-background-light border-colors-cerulean-blue-600 text-colors-cerulean-blue-600 font-bold px-6 py-3 h-auto rounded-xl"
-            >
-              Discard Changes
-            </Button>
-            <Button className="bg-colors-cerulean-blue-600 text-white font-bold px-6 py-3 h-auto rounded-xl">
-              Save&nbsp;&nbsp;Changes
-            </Button>
-          </div>
-        </div>
+        {/* Receiver Info */}
+        <Card>
+          <CardHeader><CardTitle>Receiver Information</CardTitle></CardHeader>
+          <CardContent className="space-y-4">
+            <Label>Full Name</Label>
+            <Input id="receiverName" value={form.receiverName} onChange={handleChange} />
+            <Label>Email</Label>
+            <Input id="receiverEmail" value={form.receiverEmail} onChange={handleChange} />
+            <Label>Address</Label>
+            <Textarea id="receiverAddress" value={form.receiverAddress} onChange={handleChange} />
+            <Label>Phone</Label>
+            <Input id="receiverPhone" value={form.receiverPhone} onChange={handleChange} />
+          </CardContent>
+        </Card>
       </div>
 
-      {/* Receiver Info */}
-      <Card className="w-[600px] rounded-3xl border-colors-neutral-100">
-        <CardHeader className="pb-0">
-          <CardTitle className="text-[22px] text-colors-neutral-800 font-semibold leading-[130%]">
-            {receiverInfo.title}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4 pt-0">
-          <FormField label="Full Name" placeholder="Enter your name" value="" required />
-          <FormField label="Address" placeholder="Enter your address" value="" required />
-          <div className="flex gap-4 w-full">
-            <FormField label="Email" placeholder="Enter your email" value="" required />
-            <FormField label="Telephone No." placeholder="Enter your phone number" value="" required />
+      {/* Package Info */}
+      <Card>
+        <CardHeader><CardTitle>Package Details</CardTitle></CardHeader>
+        <CardContent className="space-y-4">
+          <Label>Package Type</Label>
+          <Input id="packageType" value={form.packageType} onChange={handleChange} />
+          <Label>Weight</Label>
+          <Input id="weight" value={form.weight} onChange={handleChange} />
+          <Label>Dimensions (cm)</Label>
+          <div className="grid grid-cols-3 gap-4">
+            <Input id="dimension-length" placeholder="Length" value={form.dimensions.length} onChange={handleChange} />
+            <Input id="dimension-width" placeholder="Width" value={form.dimensions.width} onChange={handleChange} />
+            <Input id="dimension-height" placeholder="Height" value={form.dimensions.height} onChange={handleChange} />
           </div>
+          <Label>Courier Partner</Label>
+          <Input id="courier" value={form.courier} onChange={handleChange} />
         </CardContent>
       </Card>
-    </main>
+
+      <div className="flex justify-end">
+        <Button onClick={handleSubmit}>Create Order</Button>
+      </div>
+    </div>
   );
 };
 
-export default Container;
+export default ManualOrder;
+
